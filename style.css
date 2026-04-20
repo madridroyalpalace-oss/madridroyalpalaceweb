@@ -7,16 +7,18 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/* NAV */
+/* NAV FIJO */
 .nav {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   display: flex;
   justify-content: center;
   gap: 70px;
   padding: 22px;
-  background: rgba(231,225,214,0.92);
-  z-index: 1000;
+  background: rgba(231,225,214,0.95);
+  z-index: 9999;
   backdrop-filter: blur(10px);
 }
 
@@ -69,41 +71,53 @@ h1, h2 {
   font-style: italic;
 }
 
-/* SECCIONES */
+/* SECCIONES CON MÁS AIRE */
 .section {
-  padding: 140px 8%;
+  padding: 200px 8%;
 }
 
 /* TEXTO */
-.text-block {
-  max-width: 600px;
-  margin-bottom: 40px;
+.desc {
+  max-width: 700px;
+  margin: 20px auto 50px;
+  line-height: 1.8;
+  opacity: 0.85;
 }
 
-/* IMÁGENES EDITORIALES */
-.image-row {
-  display: flex;
+/* GALERÍA PREMIUM */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
   gap: 20px;
-  margin-bottom: 20px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-.image-row img {
-  width: 50%;
-  height: 380px;
-  object-fit: cover;
-  transition: 0.5s;
-}
-
-.full {
+.gallery img {
   width: 100%;
-  height: 500px;
+  height: 100%;
   object-fit: cover;
-  margin-top: 10px;
+  transition: 0.4s ease;
 }
 
-.image-row img:hover,
-.full:hover {
+.gallery img:nth-child(1) {
+  grid-column: span 7;
+  height: 380px;
+}
+
+.gallery img:nth-child(2) {
+  grid-column: span 5;
+  height: 380px;
+}
+
+.gallery img:nth-child(3) {
+  grid-column: span 12;
+  height: 420px;
+}
+
+.gallery img:hover {
   transform: scale(1.02);
+  filter: brightness(1.1);
 }
 
 /* BOTONES */
@@ -114,6 +128,27 @@ h1, h2 {
   border: 1px solid #b08d57;
   color: #b08d57;
   text-decoration: none;
+}
+
+/* RESEÑAS */
+.reviews {
+  max-width: 800px;
+  margin: auto;
+  display: grid;
+  gap: 25px;
+}
+
+.review {
+  padding: 25px;
+  border-left: 2px solid #b08d57;
+  background: rgba(255,255,255,0.4);
+  font-style: italic;
+}
+
+.review span {
+  display: block;
+  margin-top: 10px;
+  color: #b08d57;
 }
 
 /* FOOTER */
@@ -138,17 +173,15 @@ h1, h2 {
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .image-row {
-    flex-direction: column;
+  .section {
+    padding: 120px 6%;
   }
 
-  .image-row img {
-    width: 100%;
-    height: 260px;
+  .gallery {
+    grid-template-columns: 1fr;
   }
 
-  .nav {
-    gap: 20px;
-    flex-wrap: wrap;
+  .gallery img {
+    height: 260px !important;
   }
 }
