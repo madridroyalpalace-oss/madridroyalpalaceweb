@@ -1,11 +1,9 @@
-const elements = document.querySelectorAll('.reveal');
+window.addEventListener("scroll", () => {
+  const nav = document.querySelector(".nav");
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-    }
-  });
+  if (window.scrollY > 50) {
+    nav.classList.add("scrolled");
+  } else {
+    nav.classList.remove("scrolled");
+  }
 });
-
-elements.forEach(el => observer.observe(el));
